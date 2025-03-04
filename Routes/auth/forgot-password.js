@@ -1,6 +1,6 @@
 const express=require("express")
 const router=express.router()
-const forgotpassword=require("../../Models/forgot-password")
+const User=require("../../Models/userSchema")
 router.post("/forgot-password", async (req, res) => {
     try {
         const { email } = req.body;
@@ -31,10 +31,12 @@ router.post("/forgot-password", async (req, res) => {
             text: `Click here to reset your password: ${resetUrl}`,
         };
         await transporter.sendMail(mailOptions);
-        console.log("✅ Email Sent:", resetUrl);
+        console.log("Email Sent:", resetUrl);
         res.json({ message: "Password reset link sent to email!" });
     } catch (err) {
         console.error("Email Error:", err);
         res.status(500).json({ message: "Error sending email", error: err.message });
     }
 });
+
+module.exports=router
