@@ -1,6 +1,7 @@
 const express=require("express")
 const router=express.router()
 const User=require("../../Models/userSchema")
+const bcrypt=require("bcryptjs")
 
 router.post("/reset-password", async (req, res) => {
     try {

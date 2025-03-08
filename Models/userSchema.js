@@ -8,4 +8,5 @@ const UserSchema = new mongoose.Schema({
     resetTokenExpiry: Date,
 });
 
-const User = mongoose.model("User", UserSchema);
+const users = mongoose.model("users", UserSchema);
+module.exports = users; 
